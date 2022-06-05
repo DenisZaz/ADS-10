@@ -27,14 +27,14 @@ class Tree {
         transf.resize(in.size());
         Node* root = new Node;
         root->value = '*';
-        transform(in, -1, 0, root);
+        transformm(in, -1, 0, root);
     }
     Node* createNode(char value) {
         Node* temp = new Node;
         temp->value = value;
         return temp;
     }
-    void transform(std::vector<char> in, int k, int num, Node* root) {
+    void transformm(std::vector<char> in, int k, int num, Node* root) {
         if (in.size() == 1) {
             res.push_back(transf);
             return;
@@ -47,11 +47,12 @@ class Tree {
         for (int i = 0; i < in.size(); i++) {
             root->point.push_back(createNode(in[i]));
             transf[num] = in[i];
-            transform(in, i, num, root->point[i]);
+            transformm(in, i, num, root->point[i]);
         }
     }
     std::vector<char> getPerm(Tree tree, int num) {
         if (num > res.size()) return {};
         return res[num - 1];
     }
-}; #pragma once
+};
+#pragma once
